@@ -1,5 +1,6 @@
-import crypto from "crypto";
+import crypto from "node:crypto";
 import bcrypt from "bcryptjs";
+
 import { AppConfig } from "../config/env.config.js";
 import { generateMD5Hash } from "./hash.util.js";
 import { otpCache } from "./cache.util.js";

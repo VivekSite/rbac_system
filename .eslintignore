@@ -1,8 +1,0 @@
-node_modules/
-dist/
-*.config.js
-.gitignore
-.nvmrc
-.prettierrc
-yarn.lock
-.nvmrc

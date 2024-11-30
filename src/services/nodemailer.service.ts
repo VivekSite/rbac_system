@@ -1,4 +1,5 @@
 import { createTransport, SentMessageInfo } from "nodemailer";
+
 import { AppConfig } from "../config/env.config.js";
 import { Logger } from "../config/logger.config.js";
 
@@ -24,13 +25,16 @@ const sendGmail = async (to: string, subject: string, text: string) => {
 	};
 
 	return new Promise((resolve, reject) => {
-		transporter.sendMail(mailOptions, (err: Error | null, info: SentMessageInfo) => {
-			if (err) {
-				Logger.error(`Error while sending mail: ${err.message}`);
-				reject(err);
+		transporter.sendMail(
+			mailOptions,
+			(err: Error | null, info: SentMessageInfo) => {
+				if (err) {
+					Logger.error(`Error while sending mail: ${err.message}`);
+					reject(err);
+				}
+				resolve(info);
 			}
-			resolve(info);
-		});
+		);
 	});
 };
 

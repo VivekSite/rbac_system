@@ -22,7 +22,6 @@ try {
 	throw new Error(error.message);
 }
 
-
 const AppConfig = {
 	NODE_ENV: Vars.NODE_ENV || "development",
 	PORT: Vars.PORT || 8080,
@@ -41,4 +40,3 @@ const AppConfig = {
 };
 
 export { AppConfig };
-

@@ -33,21 +33,21 @@ app.use(ExpressMongoSanitize());
 const corsOptions:
 	| cors.CorsOptionsDelegate<cors.CorsRequest>
 	| cors.CorsOptions = (req, callback) => {
-		const origin = req.headers.origin;
+	const origin = req.headers.origin;
 
-		if (origin && AppConfig.ALLOWED_ORIGINS.includes(origin)) {
-			callback(null, {
-				origin,
-				methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-				allowedHeaders: ["Content-Type"],
-				credentials: true
-			});
-		} else {
-			callback(
-				new ApiError(httpStatus.UNAUTHORIZED, "Request not allowed by CORS!")
-			);
-		}
-	};
+	if (origin && AppConfig.ALLOWED_ORIGINS.includes(origin)) {
+		callback(null, {
+			origin,
+			methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+			allowedHeaders: ["Content-Type"],
+			credentials: true
+		});
+	} else {
+		callback(
+			new ApiError(httpStatus.UNAUTHORIZED, "Request not allowed by CORS!")
+		);
+	}
+};
 
 app.options("*", cors(corsOptions));
 app.use(cors(corsOptions));

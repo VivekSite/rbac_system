@@ -3,12 +3,12 @@ import bcrypt from "bcryptjs";
 
 import { userModel } from "../models/user.model.js";
 import { catchAsync } from "../utils/catchAsync.util.js";
-import { 
-	accessTokenCache, 
-	otpCache, 
-	refreshTokenCache 
+import {
+	accessTokenCache,
+	otpCache,
+	refreshTokenCache
 } from "./../utils/cache.util.js";
-import { 
+import {
 	signAccessToken,
 	signRefreshToken,
 	verifyRefreshToken
@@ -52,7 +52,7 @@ export const signUpHandler = catchAsync(async (req, res) => {
 		return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
 			success: false,
 			message: "Token generation failed!"
-		})
+		});
 	}
 
 	res.cookie("accessToken", accessToken, {
@@ -87,7 +87,10 @@ export const signInHandler = catchAsync(async (req, res) => {
 		});
 	}
 
-	const isPasswordCorrect = bcrypt.compareSync(password, existingUser.password as string);
+	const isPasswordCorrect = bcrypt.compareSync(
+		password,
+		existingUser.password as string
+	);
 	if (!isPasswordCorrect) {
 		return res.status(httpStatus.UNAUTHORIZED).json({
 			success: false,
@@ -111,7 +114,7 @@ export const signInHandler = catchAsync(async (req, res) => {
 		return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
 			success: false,
 			message: "Token generation failed!"
-		})
+		});
 	}
 
 	res.cookie("accessToken", accessToken, {

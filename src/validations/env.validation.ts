@@ -3,8 +3,8 @@ import z from "zod";
 const requiredMessage = (variableName: string) => {
 	return {
 		required_error: `${variableName} is required!`
-	}
-}
+	};
+};
 
 export const envSchema = z.object({
 	PORT: z.string().optional(),

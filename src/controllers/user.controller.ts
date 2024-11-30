@@ -12,10 +12,10 @@ export const getUserDetails = catchAsync(async (req, res) => {
 		email: 1,
 		role: 1,
 		profileImage: 1
-	}
+	};
 	const user = await userService.queryUsers(filter, projection);
 
 	return res.status(httpStatus.OK).send({
 		data: user[0]
-	})
-})
+	});
+});

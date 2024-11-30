@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 import { Logger } from "../config/logger.config.js";
 
 let connection: mongoose.Mongoose | null | void = null;
